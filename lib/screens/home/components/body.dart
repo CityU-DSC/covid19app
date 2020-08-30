@@ -21,7 +21,19 @@ class Body extends StatelessWidget {
           TitleWithMoreBtn(
             title: 'World Map',
             subtitle: '',
-            press: () {},
+            press: () async {
+              /*dynamic result = await */Navigator.pushNamed(context,'/location');
+              /*
+              setState((){
+                data={
+                  'location':result['location'],
+                  'flag':result['flag'],
+                  'time':result['time'],
+                  'isDaytime':result['isDaytime'],
+                };
+              });
+              */
+            },
           ),
           WorldInfectedMap(),
         ],
