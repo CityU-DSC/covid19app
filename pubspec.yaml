@@ -27,7 +27,7 @@ dependencies:
   font_awesome_flutter: ^8.8.1
   http: ^0.12.2
   intl: ^0.16.1
-
+  expandable: ^4.1.4
 
 
 
