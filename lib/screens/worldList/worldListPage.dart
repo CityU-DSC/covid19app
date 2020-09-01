@@ -11,6 +11,7 @@ class WorldListPage extends StatefulWidget {
 }
 
 class _WorldListPageState extends State<WorldListPage> {
+  bool isLoading = true;
   // https://api.covid19api.com/countries
   List<CountryData> locations = [
     CountryData(location: 'The US', loc_url: 'united-states'),
@@ -70,6 +71,7 @@ class _WorldListPageState extends State<WorldListPage> {
       }
 
       await Future.wait(loadCountryFutures);
+      isLoading = false;
       this.setState(() {});
     }
 
@@ -109,7 +111,9 @@ class _WorldListPageState extends State<WorldListPage> {
           )
         ],
       ),
-      body: ListView.builder(
+      body: isLoading? 
+        LinearProgressIndicator(): 
+        ListView.builder(
           itemCount: locations.length,
           itemBuilder: (context, index) {
             return Container(
