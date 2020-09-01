@@ -11,10 +11,9 @@ class WorldListPage extends StatefulWidget {
 }
 
 class _WorldListPageState extends State<WorldListPage> {
-
   // https://api.covid19api.com/countries
   List<CountryData> locations = [
-    CountryData(location: 'The US', loc_url: 'usa'),
+    CountryData(location: 'The US', loc_url: 'united-states'),
     CountryData(location: 'Canada', loc_url: 'canada'),
     CountryData(location: 'Mexico', loc_url: 'mexico'),
     CountryData(location: 'Argentina', loc_url: 'argentina'),
@@ -22,9 +21,9 @@ class _WorldListPageState extends State<WorldListPage> {
     CountryData(location: 'Taiwan', loc_url: 'taiwan'),
     CountryData(location: 'China', loc_url: 'china'),
     CountryData(location: 'Japan', loc_url: 'japan'),
-    CountryData(location: 'South Korea', loc_url: 'south-korea'),
+    CountryData(location: 'South Korea', loc_url: 'korea-south'),
     CountryData(location: 'South Africa', loc_url: 'south-africa'),
-    CountryData(location: 'UK', loc_url: 'uk'),
+    CountryData(location: 'UK', loc_url: 'united-kingdom'),
     CountryData(location: 'Denmark', loc_url: 'denmark'),
     CountryData(location: 'Germany', loc_url: 'germany'),
     CountryData(location: 'France', loc_url: 'france'),
@@ -33,15 +32,15 @@ class _WorldListPageState extends State<WorldListPage> {
   ];
 
   bool receivedAll() {
-    for(int i=0; i<locations.length; i++) {
-      if (locations[i].total_cases == 'loading...') {
+    for (int i = 0; i < locations.length; i++) {
+      if (locations[i].total_cases == null) {
         return false;
       }
       return true;
     }
   }
 
-  void printCountryData(index) async{
+  void printCountryData(index) async {
     CountryData instance = locations[index];
     print(instance.location);
     await instance.getData();
@@ -51,10 +50,9 @@ class _WorldListPageState extends State<WorldListPage> {
     print(instance.total_recovery);
   }
 
-  void loadCountryData(index) async {
+  Future<void> loadCountryData(index) async {
     CountryData instance = locations[index];
     await instance.getData();
-    setState(() {});
   }
 
   @override
@@ -62,26 +60,35 @@ class _WorldListPageState extends State<WorldListPage> {
     print('build start');
 
     // SORT LIST
-    locations.sort((a,b) => a.location.compareTo(b.location));
+    locations.sort((a, b) => a.location.compareTo(b.location));
+
+    void loadAllCountryData(val) async {
+      List<Future<void>> loadCountryFutures = [];
+
+      for (int i = 0; i < locations.length; i++) {
+        loadCountryFutures.add(this.loadCountryData(i));
+      }
+
+      await Future.wait(loadCountryFutures);
+      this.setState(() {});
+    }
 
     // LOAD ALL DATA (IF HAVEN'T ALREADY)
     if (!receivedAll()) {
-      for(int i=0; i<locations.length; i++) {
-        loadCountryData(i);
-      }
+      CountryData.loadAll().then(loadAllCountryData);
       //loadCountryDataAll();
     }
 
     return Scaffold(
       backgroundColor: Colors.grey,
-      appBar:AppBar(
+      appBar: AppBar(
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
             'assets/icons/dsc_icon.svg',
             color: Colors.white,
           ),
-          onPressed: (){
+          onPressed: () {
             Navigator.pop(context);
           },
         ),
@@ -96,42 +103,42 @@ class _WorldListPageState extends State<WorldListPage> {
         actions: [
           IconButton(
             icon: SvgPicture.asset('assets/icons/menu.svg'),
-            onPressed: (){
+            onPressed: () {
               Navigator.pop(context);
             },
           )
         ],
       ),
       body: ListView.builder(
-        itemCount: locations.length,
-        itemBuilder:(context, index){
-          return Container(
-            padding: EdgeInsets.all(8),
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
-            color: Colors.white,
-            child: ExpandablePanel(
-              header: Text(
-                locations[index].location,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold
+          itemCount: locations.length,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: EdgeInsets.all(8),
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
+              color: Colors.white,
+              child: ExpandablePanel(
+                header: Text(
+                  locations[index].location.toString(),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                collapsed: Text('Total Confirmed Cases: ' +
+                    locations[index].total_cases.toString()),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Total Confirmed Cases: ' +
+                        locations[index].total_cases.toString()),
+                    Text('Total Deaths: ' +
+                        locations[index].total_deaths.toString()),
+                    Text('Total Recoveries: ' +
+                        locations[index].total_recovery.toString()),
+                    Text('Total Active Cases: ' +
+                        locations[index].total_active.toString()),
+                  ],
                 ),
               ),
-              collapsed: Text('Total Confirmed Cases: ' + locations[index].total_cases.toString()),
-              expanded: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Total Confirmed Cases: ' + locations[index].total_cases),
-                  Text('Total Deaths: ' + locations[index].total_deaths),
-                  Text('Total Recoveries: ' + locations[index].total_recovery),
-                  Text('Total Active Cases: ' + locations[index].total_active),
-                ],
-
-              ),
-            ),
-          );
-        }
-      ),
+            );
+          }),
     );
   }
 }
