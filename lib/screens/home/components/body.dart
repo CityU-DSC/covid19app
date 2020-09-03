@@ -13,6 +13,12 @@ class Body extends StatelessWidget {
         children: <Widget>[
           HeaderWithSelectRegion(size: size),
           TitleWithMoreBtn(
+            title: 'Selected Country',
+            subtitle: 'This is the total figure',
+            press: () {},
+          ),
+          CurrentFigureCard(),
+          TitleWithMoreBtn(
             title: 'Current',
             subtitle: 'This is the total figure',
             press: () {},
@@ -22,7 +28,8 @@ class Body extends StatelessWidget {
             title: 'World Map',
             subtitle: '',
             press: () async {
-              /*dynamic result = await */Navigator.pushNamed(context,'/location');
+              /*dynamic result = await */ Navigator.pushNamed(
+                  context, '/location');
               /*
               setState((){
                 data={

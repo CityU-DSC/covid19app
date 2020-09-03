@@ -19,8 +19,9 @@ class CountryData {
   int total_active = null;
   int tries = 0;
 
-  static List<dynamic> allData = null;
-  static DateTime previousCalledDate = null;
+  static List<dynamic> allData;
+  static dynamic globalData;
+  static DateTime previousCalledDate;
 
   static Future<void> loadAll() async {
     if (CountryData.isAllDataFetched()) {
@@ -29,7 +30,9 @@ class CountryData {
     try {
       String full_url = 'https://api.covid19api.com/summary';
       Response response = await get(full_url);
-      allData = jsonDecode(response.body)['Countries'];
+      dynamic responseBody = jsonDecode(response.body);
+      allData = responseBody['Countries'];
+      globalData = responseBody['Global'];
       previousCalledDate = new DateTime.now();
     } catch (e) {
       print('Caught error: $e');
@@ -104,7 +107,7 @@ class CountryData {
 
 // void main() async {
 //   CountryData.loadAll();
-//   print(CountryData.allData);
+// print(CountryData.allData);
 
 // /*  CountryData instance = CountryData(location: 'The US', loc_url: 'usa');
 //   print(instance.location);
