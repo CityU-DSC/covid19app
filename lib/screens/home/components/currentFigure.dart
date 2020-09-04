@@ -33,7 +33,7 @@ class _CurrentFigureCardState extends State<CurrentFigureCard> {
   Widget build(BuildContext context) {
     getGlobalData();
 
-    print('BUILDING');
+    //print('BUILDING');
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,

@@ -41,7 +41,7 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
       setState(() => {});
     });
 
-    getDefaultData();
+    if (total_infected == null) getDefaultData();
 
     return Container(
       margin: EdgeInsets.only(
