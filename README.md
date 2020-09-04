@@ -1,10 +1,10 @@
 # covid19app
 
-A flutter Project form CityU DSC.
+A flutter project form CityU DSC.
 
 ## Goal
-The goal is to let user see the current situation of covid19 clearly and correctly.It is also the real-time-covid19 app, which fetching data from an api.\
-We use flutter to develop this app, which is friendly to ios and android user at the same time.\
+The goal is to allow user access the current situation of Covid-19 clearly, correctly and rapidly. It is also the real-time-covid19 app, which fetching data from an external [api](https://api.covid19api.com/).\
+We use **flutter** to develop this app, which is friendly to ios and android user at the same time.\
 And for our team, the main goal is to try out developing new stuff even in this hard time and chaotic situation~ 
 
 ## Author
