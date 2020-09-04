@@ -12,7 +12,6 @@ The goal is to let user see the current situation of covid19 clearly and correct
 @shawn
 @leon
 
----
 
 ## Work Division
 UI/ Home page : Ryanyen/ Leon
