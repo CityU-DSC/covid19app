@@ -38,7 +38,7 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
       margin: EdgeInsets.only(
         bottom: kDeffaultPdding * 2.5,
       ),
-      height: widget.size.height * 0.23,
+      height: widget.size.height * 0.3,
       child: Stack(
         children: <Widget>[
           Container(
@@ -87,17 +87,20 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: 60,
             left: 0,
             right: 0,
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              height: 122,
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
                 border: Border.all(
                   color: Color(0xFFE5E5E5),
                 ),
@@ -132,11 +135,48 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
                       ),
                     ],
                   ),
-                  Container(
-                    child: Text('Infected: $total_infected'),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 50,
+              margin: EdgeInsets.only(
+                left: kDeffaultPdding,
+                right: kDeffaultPdding,
+              ),
+              padding: EdgeInsets.only(
+                left: kDeffaultPdding * 2,
+                right: kDeffaultPdding * 2,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+                color: kBodyTextColor.withOpacity(1),
+              ),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Infected: $total_infected',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
-                  Container(
-                    child: Text('Death: $total_deaths'),
+                  Spacer(),
+                  Text(
+                    'Death: $total_deaths',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                 ],
               ),

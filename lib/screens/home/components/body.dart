@@ -13,12 +13,6 @@ class Body extends StatelessWidget {
         children: <Widget>[
           HeaderWithSelectRegion(size: size),
           TitleWithMoreBtn(
-            title: 'Selected Country',
-            subtitle: 'This is the total figure',
-            press: () {},
-          ),
-          CurrentFigureCard(),
-          TitleWithMoreBtn(
             title: 'Current',
             subtitle: 'This is the total figure',
             press: () {},
