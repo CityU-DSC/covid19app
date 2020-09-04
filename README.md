@@ -13,7 +13,7 @@ A flutter Project form CityU DSC.
 [Link to demo video](https://www.youtube.com/watch?v=gbIX8AJ4DXA)
 
 ## Gif Demo
-[first Demo](assets/first.gif)
+![first Demo](assets/first.gif)
 [second](/assets/second.gif)
 [third](./assets/third.gif)
 
