@@ -6,11 +6,11 @@ A flutter Project form CityU DSC.
 The goal is to let user see the current situation of covid19 clearly and correctly. It is also the real-time-covid19 app, which fetching data from an api. We use flutter to develop this app, which is friendly to ios and android user at the same time. And for our team, the main goal is to try out developing new stuff even in this hard time and chaotic situation~ 
 
 ## Author
-@ryanyen
-@eugene
-@luke
-@shawn
-@leon
+@ryanyen\
+@eugene\
+@luke\
+@shawn\
+@leon\
 
 
 ## Work Division
