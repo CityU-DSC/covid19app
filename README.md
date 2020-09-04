@@ -14,8 +14,8 @@ A flutter Project form CityU DSC.
 
 ## Gif Demo
 ![first Demo](assets/first.gif)
-[second](/assets/second.gif)
-[third](./assets/third.gif)
+![second](assets/second.gif)
+![third](assets/third.gif)
 
 
 ## Getting Started
