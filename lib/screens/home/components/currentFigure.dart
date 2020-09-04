@@ -1,14 +1,40 @@
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart';
+import 'dart:convert';
 import '../../../constant.dart';
 
-class CurrentFigureCard extends StatelessWidget {
+class CurrentFigureCard extends StatefulWidget {
   const CurrentFigureCard({
     Key key,
   }) : super(key: key);
 
   @override
+  _CurrentFigureCardState createState() => _CurrentFigureCardState();
+}
+
+class _CurrentFigureCardState extends State<CurrentFigureCard> {
+  double current_global_infected;
+  double current_global_deaths;
+
+  void getGlobalData() async {
+    String full_url = 'https://api.covid19api.com/summary';
+    Response response = await get(full_url);
+    dynamic responseBody = jsonDecode(response.body);
+    dynamic globalData = responseBody['Global'];
+    setState(() {
+      current_global_infected = num.parse(
+          (globalData['TotalConfirmed'] / 1000000.0).toStringAsFixed(1));
+      current_global_deaths =
+          num.parse((globalData['TotalDeaths'] / 1000.0).toStringAsFixed(1));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    getGlobalData();
+
+    //print('BUILDING');
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -17,13 +43,13 @@ class CurrentFigureCard extends StatelessWidget {
             image: 'assets/images/headache.png',
             title: "Infected",
             unit: 'Million',
-            amount: 10.8,
+            amount: current_global_infected,
           ),
           FigureCard(
             image: 'assets/images/fever.png',
             title: "Death",
-            amount: 2.1,
-            unit: 'Million',
+            amount: current_global_deaths,
+            unit: 'Thousand',
           ),
           FigureCard(
             image: 'assets/images/caugh.png',
