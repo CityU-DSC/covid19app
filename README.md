@@ -3,20 +3,22 @@
 A flutter Project form CityU DSC.
 
 ## Goal
-The goal is to let user see the current situation of covid19 clearly and correctly. It is also the real-time-covid19 app, which fetching data from an api. We use flutter to develop this app, which is friendly to ios and android user at the same time. And for our team, the main goal is to try out developing new stuff even in this hard time and chaotic situation~ 
+The goal is to let user see the current situation of covid19 clearly and correctly.It is also the real-time-covid19 app, which fetching data from an api.\
+We use flutter to develop this app, which is friendly to ios and android user at the same time.\
+And for our team, the main goal is to try out developing new stuff even in this hard time and chaotic situation~ 
 
 ## Author
 @ryanyen\
 @eugene\
 @luke\
 @shawn\
-@leon\
+@leon
 
 
 ## Work Division
-UI/ Home page : Ryanyen/ Leon
-API/ data : Eugene/ Leon/ Shawn/ Luke
-WorldList Page: Shawn/ Luke/ Eugene
+UI/ Home page : Ryanyen/ Leon\
+API/ data : Eugene/ Leon/ Shawn/ Luke\
+WorldList Page: Shawn/ Luke/ Eugene\
 Project Manager: Ryanyen
 
 ---
@@ -25,8 +27,8 @@ Project Manager: Ryanyen
 [Link to demo video](https://www.youtube.com/watch?v=gbIX8AJ4DXA)
 
 ## Gif Demo
-![first Demo](assets/first.gif)
-![second](assets/second.gif)
+![first Demo](assets/first.gif)\
+![second](assets/second.gif)\
 ![third](assets/third.gif)
 
 
