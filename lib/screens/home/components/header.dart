@@ -25,6 +25,13 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
     'Mainland China': CountryData(location: 'China', loc_url: 'china'),
   };
 
+  void getDefaultData() async {
+    setState(() {
+      total_infected = locations['Taiwan'].total_cases;
+      total_deaths = locations['Taiwan'].total_deaths;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     CountryData.loadAll().then((temp) {
@@ -33,6 +40,8 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
       });
       setState(() => {});
     });
+
+    getDefaultData();
 
     return Container(
       margin: EdgeInsets.only(
@@ -166,7 +175,7 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
                     'Infected: $total_infected',
                     textAlign: TextAlign.right,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20,
                     ),
                   ),
@@ -174,7 +183,7 @@ class _HeaderWithSelectRegionState extends State<HeaderWithSelectRegion> {
                   Text(
                     'Death: $total_deaths',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20,
                     ),
                   ),

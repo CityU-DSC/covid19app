@@ -13,7 +13,7 @@ class Body extends StatelessWidget {
         children: <Widget>[
           HeaderWithSelectRegion(size: size),
           TitleWithMoreBtn(
-            title: 'Current',
+            title: 'Current Total',
             subtitle: 'This is the total figure',
             press: () {},
           ),
