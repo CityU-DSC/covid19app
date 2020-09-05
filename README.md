@@ -8,7 +8,7 @@ We use **flutter** to develop this app, which is friendly to ios and android use
 And for our team, the main goal is to try out developing new stuff even in this hard time and chaotic situation~ 
 
 ## Author
-@ryanyen\
+@ryanyen2\
 @eugene\
 @luke\
 @shawn\
